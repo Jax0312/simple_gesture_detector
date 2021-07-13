@@ -37,6 +37,12 @@ class SimpleGestureDetector extends StatefulWidget {
   /// Callback to be run when Widget is long-pressed;
   final VoidCallback? onLongPress;
 
+  /// Callback to be run when Widget is hold down;
+  final GestureLongPressStartCallback? onHold;
+
+  /// Callback to be run when Widget is released;
+  final GestureLongPressEndCallback? onRelease;
+
   /// Creates a [SimpleGestureDetector] widget.
   const SimpleGestureDetector({
     Key? key,
@@ -48,6 +54,8 @@ class SimpleGestureDetector extends StatefulWidget {
     this.onTap,
     this.onDoubleTap,
     this.onLongPress,
+    this.onHold,
+    this.onRelease
   }) : super(key: key);
 
   @override
@@ -185,6 +193,8 @@ class _SimpleGestureDetectorState extends State<SimpleGestureDetector> {
       onTap: widget.onTap,
       onLongPress: widget.onLongPress,
       onDoubleTap: widget.onDoubleTap,
+      onLongPressStart: widget.onHold,
+      onLongPressEnd: widget.onRelease,
       onVerticalDragStart:
           widget.onVerticalSwipe != null ? _onVerticalDragStart : null,
       onVerticalDragUpdate:
